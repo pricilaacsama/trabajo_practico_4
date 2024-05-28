@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRABAJO PRACTICO 4</title>
+<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+	<header class="text-center py-4">
+		<div class="container header-container">
+			<h1 class="text-center fw-bold">Facultad De Ingenieria UNJu</h1>
+
+			<div class="text-center">
+				<img
+					src="data:image/jpeg;base64,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"
+					class="img-fluid" alt="logotipo">
+			</div>
+			<div class="col-md-12">
+				<p class="text-center lead">~Siendo proactivos, responsables de
+					nuestro propio destino...~</p>
+			</div>
+
+		</div>
+	</header>
+
+	<nav class="navbar sticky-top navbar-expand-lg"
+		style="background-color: maroon; font-weight: bold">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"> Menu </a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="https://www.fi.unju.edu.ar/institucional/historia.html">Acerca De</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="https://www.unju.edu.ar/oferta2024/fi.php">Carreras</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="https://fi.unju.edu.ar/alumnos-noticias.html">Noticias</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="https://www.fi.unju.edu.ar/telefonos-contactos">Contacto</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container my-4">
+		<div class="row">
+			<aside class="col-md-3">
+				<div class="list-group" style="font-weight: bold">
+					<a href="https://virtual.unju.edu.ar/bibliotecas/"
+						class="list-group-item list-group-item-action list-group-item-info">Biblioteca</a>
+					<a
+						href="https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html"
+						class="list-group-item list-group-item-action list-group-item-info">Calendario
+						Academico</a> <a href="https://alumnos.unju.edu.ar/unju/"
+						class="list-group-item list-group-item-action list-group-item-info">SIU
+						Guarani</a> <a href="https://campus.fi.unju.edu.ar/"
+						class="list-group-item list-group-item-action list-group-item-info">Campus
+						FI</a>
+				</div>
+			</aside>
+
+			<main class="col-md-9">
+				<section>
+					<h2 class="text-center" style="font-family: monospace">BIENVENIDOS A LA FACULTAD DE INGENIERIA UNJU</h2>
+					<h3>Historia</h3>
+					<p>La Universidad nace el 25 de mayo de 1972 como universidad
+						provincial y al año siguiente se transforma en Universidad
+						Nacional. Comienza a funcionar sobre la base de cuatro carreras:
+						Ingeniería Agronómica, Ingeniería de Minas, Ingeniería Metalúrgica
+						e Ingeniería Química. Su propósito fue apuntalar las actividades
+						de explotación e industrialización de los recursos naturales de
+						Jujuy. Las tres últimas carreras mencionadas pasan a constituir la
+						actual Facultad de Ingeniería que, con el transcurso de los años,
+						sumó a ellas un número importante de otras carreras.</p>
+					<p>Las políticas de la Universidad Nacional de Jujuy, y
+						especialmente de la Facultad de Ingeniería, tienden a ampliar el
+						área de influencia y a fortalecer su acción institucional, en
+						respuesta a la demanda social creciente de formación de recursos
+						humanos que contribuyan al desarrollo científico, tecnológico y
+						cultural.</p>
+				</section>
+				<section>
+					<h3>Noticias Recientes</h3>
+					<div class="row">
+						<div class="col-md-6 mb-4">
+							<div class="card" style="width: 18rem">
+								<div class="card-body">
+									<h5 class="card-title">52º Aniversario de la Facultad de
+										Ingenieria de la UNJu</h5>
+									<p class="card-text">La FI esta de cumple y celebra sus 52
+										anios, por eso los invitamos a todos a compartir un riquisimo
+										chocalate manana 24 de Mayo a hs. 10:00 en el patio de
+										Decanato... Los esperamos!!</p>
+									<a
+										href="https://www.fi.unju.edu.ar/noticias-generales/4576-52%C2%B0-aniversario-de-la-facultad-de-ingenieria-de-la-unju.html"
+										class="card-link">Leer mas</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-4">
+							<div class="card" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Campania de vacunacion UNJu 2024</h5>
+									<p class="card-text">El día 29 de mayo del corriente, en el
+										Aula Pelayo Pena de la Escuela de Minas "Dr. Horacio Carrillo"
+										de la UNJu, se realizará una Jornada de Vacunación destinada a
+										Estudiantes, Personal Docentes y No Docente de la Universidad
+										Nacional de Jujuy, en el horario de 09:00 a 15:30 horas.</p>
+									<a
+										href="https://www.fi.unju.edu.ar/unju/4580-campana-de-vacunacion-unju-2024.html"
+										class="card-link">Leer mas</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+	<footer class="bg-dark text-white text-center py-3">
+		<div class="container">
+			<p>Direccion: Italo Palanca Nº10 - San Salvador de Jujuy - Jujuy
+				- Argentina</p>
+			<p>Telefono: 388-422-1576</p>
+			<p>
+				Correo Electronico: <a href="">info@fi.unju.edu.ar</a>
+			</p>
+			<div>
+				<a href="https://www.facebook.com/fiunju/">Facebook</a> <br> <a
+					href="https://www.instagram.com/fiunju/">Instagram</a>
+			</div>
+			<p>&copy; 2014-2022 - Facultad de Ingeniería - UNJu</p>
+			<p>&copy; Pricila Acsama</p>
+		</div>
+	</footer>
+
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
